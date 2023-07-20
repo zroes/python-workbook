@@ -1,3 +1,4 @@
+import time
 # steps is an int that describes how many steps are in a staircase
 # solution will return the number of different ways someone could climb the stairs, if they could climb either 1 or 2 steps at a time
 # from experimenting, we see:
@@ -21,7 +22,7 @@ def steps_b(n):
 
 
 
-# Day One ----------------------------
+# NOTE Day One ----------------------------
 # basic
 def p_one(list, k):
   for i in list:
@@ -40,7 +41,81 @@ def p_one_set(list, k):
       return True
   return False 
 
-print(p_one_set([10,15,3,7], 12))
-  
-    
-  
+
+
+# NOTE Day Two ---------------------------
+# with division
+def p_two_div(list):
+  arr = []
+  prod = 1
+  for i in list:
+    prod *= i
+  for i in list:
+    arr.append(prod / i)
+  return arr
+
+# no division
+def p_two(list):
+  arr = []
+  prod = 1
+  for i in list:
+    prod = 1
+    for j in list:
+      if j != i:
+        prod *= j
+    arr.append(prod)
+  return arr
+
+
+# O(n) solution from stack
+def p_two_good(list):
+  n = len(list)
+  products_below = []
+  prod = 1
+  for i in range(n):
+    products_below.append(prod)
+    prod *= list[i]
+  # print(products_below)
+
+  products_above = []
+  prod = 1
+  for i in reversed(range(n)):
+    products_above.append(prod)
+    prod *= list[i]
+  products_above.reverse()
+  # print(products_above)
+
+  products = []
+  for i in range(n):
+    products.append(products_above[i] * products_below[i])
+
+  return products
+
+# print(p_one_set([10,15,3,7], 12))
+# print(p_two([1, 2, 3, 4, 5]))
+# print(p_two_good([1, 2, 3, 4, 5]))
+
+
+
+
+
+
+# NOTE timer stuff
+t0 = time.time()
+for _ in range(10000):
+  p_two([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ,13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 30, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ,13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 30])
+t1 = time.time()
+print(t1 - t0)
+
+t0 = time.time()
+for _ in range(10000):
+  p_two_div([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ,13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 30, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ,13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 30])
+t1 = time.time()
+print(t1 - t0)
+
+
+t0 = time.time()
+for _ in range(10000):
+  p_two_good([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ,13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 30, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ,13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 30])
+t1 = time.time()
+print(t1 - t0)
