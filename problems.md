@@ -34,5 +34,5 @@ The following test should pass:
 node = Node('root', Node('left', Node('left.left')), Node('right'))
 assert deserialize(serialize(node)).left.left.val == 'left.left'
 ```
-
+solution: https://numbergeneral.github.io/dailycodingproblem03/
 NOTES: This one was impossible for me and I had to search for a solution. If I can't figure out binary trees / linked lists next time, I'm going to need to look into a data sturctures course.
