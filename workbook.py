@@ -1,4 +1,5 @@
 import time
+# import assert
 # steps is an int that describes how many steps are in a staircase
 # solution will return the number of different ways someone could climb the stairs, if they could climb either 1 or 2 steps at a time
 # from experimenting, we see:
@@ -95,27 +96,65 @@ def p_two_good(list):
 # print(p_two([1, 2, 3, 4, 5]))
 # print(p_two_good([1, 2, 3, 4, 5]))
 
+# NOTE Day Three --------------------------
+# I had no idea how to even start this one...
+class Node:
+  def __init__(self, val, left=None, right=None):
+    self.val = val
+    self.left = left
+    self.right = right
 
 
+def serialize(node):
+  val = node.val
+  if node.left:
+    left = serialize(node.left)
+  else:
+    left = None
+  if node.right:
+    right = serialize(node.right)
+  else:
+    right = None
 
+  serialized = [val, left, right]
+  return serialized
 
+def deserialize(serialzed_node):
+  val = serialzed_node[0]
+  if serialzed_node[1]:
+    left = deserialize(serialzed_node[1])
+  else:
+    left = None
+
+  if serialzed_node[2]:
+    right = deserialize(serialzed_node[2])
+  else:
+    right = None
+
+  return Node(val, left, right)
+
+node = Node('root', Node('left', Node('left.left')), Node('right'))
+assert deserialize(serialize(node)).left.left.val == 'left.left'
+print(node)
+print(serialize(node))
+print(deserialize(serialize(node)))
 
 # NOTE timer stuff
-t0 = time.time()
-for _ in range(10000):
-  p_two([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ,13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 30, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ,13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 30])
-t1 = time.time()
-print(t1 - t0)
+# t0 = time.time()
+# for _ in range(10000):
+#   p_two([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ,13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 30, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ,13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 30])
+# t1 = time.time()
+# print(t1 - t0)
 
-t0 = time.time()
-for _ in range(10000):
-  p_two_div([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ,13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 30, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ,13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 30])
-t1 = time.time()
-print(t1 - t0)
+# t0 = time.time()
+# for _ in range(10000):
+#   p_two_div([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ,13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 30, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ,13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 30])
+# t1 = time.time()
+# print(t1 - t0)
 
 
-t0 = time.time()
-for _ in range(10000):
-  p_two_good([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ,13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 30, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ,13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 30])
-t1 = time.time()
-print(t1 - t0)
+# t0 = time.time()
+# for _ in range(10000):
+#   p_two_good([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ,13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 30, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ,13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 30])
+# t1 = time.time()
+# print(t1 - t0)
