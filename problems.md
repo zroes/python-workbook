@@ -36,3 +36,13 @@ assert deserialize(serialize(node)).left.left.val == 'left.left'
 ```
 solution: https://numbergeneral.github.io/dailycodingproblem03/
 NOTES: This one was impossible for me and I had to search for a solution. If I can't figure out binary trees / linked lists next time, I'm going to need to look into a data sturctures course.
+
+
+
+<!-- SECTION 4 -->
+Given an array of integers, find the first missing positive integer in linear time and constant space. In other words, find the lowest positive integer that does not exist in the array. The array can contain duplicates and negative numbers as well.
+
+For example, the input [3, 4, -1, 1] should give 2. The input [1, 2, 0] should give 3.
+
+You can modify the input array in-place.
+

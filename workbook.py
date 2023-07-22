@@ -133,11 +133,24 @@ def deserialize(serialzed_node):
 
   return Node(val, left, right)
 
-node = Node('root', Node('left', Node('left.left')), Node('right'))
-assert deserialize(serialize(node)).left.left.val == 'left.left'
-print(node)
-print(serialize(node))
-print(deserialize(serialize(node)))
+# node = Node('root', Node('left', Node('left.left')), Node('right'))
+# assert deserialize(serialize(node)).left.left.val == 'left.left'
+# print(node)
+# print(serialize(node))
+# print(deserialize(serialize(node)))
+
+
+# NOTE Day 4
+def low_pos_int(arr):
+  v = 1
+  for i in sorted(arr):
+    if i == v:
+      v += 1
+  return v
+
+
+
+
 
 # NOTE timer stuff
 # t0 = time.time()
