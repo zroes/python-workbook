@@ -149,6 +149,21 @@ def low_pos_int(arr):
   return v
 
 
+# NOTE Day 5
+def cons(a, b):
+  def pair(f):
+    return f(a, b)
+  return pair
+
+def car(pair):
+  return pair(lambda a, b : a)
+
+def cdr(pair):
+  return pair(lambda a, b : b)
+
+print(cons(4, 5))
+print(car(cons(4, 5)))
+print(cdr(cons(4, 5)))
 
 
 
