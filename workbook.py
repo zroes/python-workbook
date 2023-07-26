@@ -161,11 +161,66 @@ def car(pair):
 def cdr(pair):
   return pair(lambda a, b : b)
 
-print(cons(4, 5))
-print(car(cons(4, 5)))
-print(cdr(cons(4, 5)))
+# print(cons(4, 5))
+# print(car(cons(4, 5)))
+# print(cdr(cons(4, 5)))
 
+# NOTE Day 7
+# Needed lots of assistance with this one
+# Overall it's a relatively basic dynamic programming problem, but this was my first intro to dp. 
+def decode(message):
+  total = 1
+  for i in range(len(message)):
+    print(i, total)
+    if int(message[i]) == 1:
+      try:
+        message[i + 1]
+        total += 1
+      except IndexError as e:
+        pass
+  return total
 
+def decode_d(message):
+    message_len = len(message)
+
+    number_of_solutions = [0] * (message_len + 1)
+    number_of_solutions[0] = 1
+    number_of_solutions[1] = 1
+
+    for i in range(2, message_len+1):
+        last_digit = int(message[i-1])
+        two_last_digits = int(message[(i-2):i])
+        # If the last digit is greater than zero, 
+        # then the number of solutions stays the same
+        if (last_digit > 0):
+            number_of_solutions[i] = number_of_solutions[i - 1]
+
+        # If the two last digits are in between 9 and 27, 
+        # this results in an additional batch of solutions.
+        # Thus, a number of the solutions from two characters before is added.
+        if ((two_last_digits > 9) & (two_last_digits < 27)):  
+            number_of_solutions[i] += number_of_solutions[i - 2]  
+
+    return number_of_solutions[-1]
+
+def decode_dp(s):
+  l = len(s)
+  dp = [0] * l
+  dp.append(1)
+  print(dp)
+  # basically, dp represents each 'layer' of recursion, if we were to solve this with recursion.
+  # For each layer, we add the total solutions from the previous layer
+  # if the value at isn't at the end, and is equal to 1 or 2, then we add the solutions from the previous previous layer as well 
+  for i in range(l - 1, -1, -1):
+    if s[i] == '0':
+      continue
+    dp[i] += dp[i+1]
+    if i + 1 < l and (s[i] <= '1' or (s[i] == '2' and s[i+1] <= '6')):
+      dp[i] += dp[i+2]
+  print(dp)
+  return dp[0]
+
+# print(decode_d('1114512'), decode('1114512'))
 
 # NOTE timer stuff
 # t0 = time.time()

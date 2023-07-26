@@ -35,7 +35,7 @@ node = Node('root', Node('left', Node('left.left')), Node('right'))
 assert deserialize(serialize(node)).left.left.val == 'left.left'
 ```
 solution: https://numbergeneral.github.io/dailycodingproblem03/
-NOTES: This one was impossible for me and I had to search for a solution. If I can't figure out binary trees / linked lists next time, I'm going to need to look into a data sturctures course.
+NOTES: This one was impossible for me and I had to search for a solution. If I can't figure out binary trees / linked lists next time, I'm going to need to look into a data structures course.
 
 
 
@@ -58,3 +58,18 @@ def cons(a, b):
     return pair
 ```
 Implement car and cdr.
+
+<!-- SECTION 7  (skipped 6) -->
+Given the mapping a = 1, b = 2, ... z = 26, and an encoded message, count the number of ways it can be decoded.
+
+For example, the message '111' would give 3, since it could be decoded as 'aaa', 'ka', and 'ak'.
+
+You can assume that the messages are decodable. For example, '001' is not allowed.
+
+NOTES: This was an intro to dynamic programming, yet another thing I need to learn more about
+Resources: https://leetcode.com/problems/decode-ways/solutions/2795116/python-solution-explained-intuition-and-algorithm/
+https://numbergeneral.github.io/dailycodingproblem07/
+
+
+
+
