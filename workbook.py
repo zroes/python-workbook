@@ -222,6 +222,15 @@ def decode_dp(s):
 
 # print(decode_d('1114512'), decode('1114512'))
 
+# NOTE Day 11
+def autocomp(s: str, words: set):
+    return [word for word in words if word.startswith(s)]
+
+print(autocomp('dea', ["deer", "dear", "deal", "deep", "dead", "dean"]))
+
+
+
+
 # NOTE timer stuff
 # t0 = time.time()
 # for _ in range(10000):
