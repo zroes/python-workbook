@@ -226,10 +226,25 @@ def decode_dp(s):
 def autocomp(s: str, words: set):
     return [word for word in words if word.startswith(s)]
 
-print(autocomp('dea', ["deer", "dear", "deal", "deep", "dead", "dean"]))
+# print(autocomp('dea', ["deer", "dear", "deal", "deep", "dead", "dean"]))
 
+def run_len(s: str):
+  output = ""
+  l = len(s)
+  i = 0
+  while i < l - 1:
+    count = 1
+    while  i < l - 1 and s[i + 1] == s[i]:
+      # print(s[i], i)
+      count += 1
+      i += 1
+    output += f"{count}{s[i]}"
+    i+=1
+    # print(n)
+    # print(output)
+  return output
 
-
+print(run_len("AAAABBBCCDAA"))
 
 # NOTE timer stuff
 # t0 = time.time()
