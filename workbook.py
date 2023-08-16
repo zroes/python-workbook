@@ -228,6 +228,7 @@ def autocomp(s: str, words: set):
 
 # print(autocomp('dea', ["deer", "dear", "deal", "deep", "dead", "dean"]))
 
+# NOTE Day 29
 def run_len(s: str):
   output = ""
   l = len(s)
